@@ -59,4 +59,4 @@ jobs:
         with:
           app-name: 'Hair'
           slot-name: 'production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_52a5945ab25546c0bcde4695576aa98e }}
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_232b69395a4e4a31afc364e6b8a1c7ae }}
