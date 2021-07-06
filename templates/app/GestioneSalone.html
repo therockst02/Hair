@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+
+ {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+<body>
+
+    <div class="sfondo2" style="height: 100vh" id="Tabella">
+         
+        <div class="banner">
+          <div class="navbarhome">
+              <img src="{% static "app/Foto/Logo.png" %}" class="logo" style="width:7%; height:7%"/>
+              <ul>
+                  <li><a href="#"> Il Mio Salone </a></li>
+                  <li><a href="#"> Contattaci </a></li>
+                  <li><a href="#"> Il Mio Account</a></li>
+              </ul>
+          </div>
+          <div class="contenthome" style="margin-top:15%; margin-inline:auto">
+               <img src="{% static "app/Foto/Calendario.png" %}"/> 6 Maggio 
+              
+               <table class="bordered">
+                    <tr>
+                        <th><label>Nome</label></th>
+                        <th><label>Orario Appuntamento</label></th>
+                        <th><label>Trattamento</label></th>
+                        <th><label>Costo</label></th>
+                    </tr>
+                    {% for appuntamento in appuntamenti %}
+                        <tr>
+                            <td><label>Da fare</label></td>
+                            <td><label>{{appuntamento.Data}}</label></td>
+                            <td><label>{{appuntamento.Id_Trattamento}}</label></td>
+                            <td><label>15 €</label></td>
+                        </tr>
+                    {% endfor %}
+                    </table>
+              
+              <div style="margin-left: -11px">
+                    <a href={% url 'crea_appuntamento' %} class="button">Aggiungi Appuntamento</a>
+                    <button type="button"><span></span> Rimuovi Appuntamento </button>
+                    <button type="button"><span></span> Modifica Appuntamento </button>
+              </div>
+          </div>
+      </div>
+
+
+       
+        
+
+    </div>
+
+    
+</body>
+
+
+
+ {% block contenuto %}
+ {% endblock %}

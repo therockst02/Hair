@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+
+ {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
+
+<body>
+    
+  
+
+
+
+
+     <div style="height: 100vh" id="Home">
+     
+       
+      <div class="banner font" style="  background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url({{saloni.Immagine.url}});">
+          <div class="navbarhome">
+              <img src="{% static "app/Foto/Logo.png" %}" class="logo" style="width:7%; height:7%"/>
+              <ul>
+                  <li><a href="#ChiSiamo"> Chi Siamo </a></li>
+                  <li><a href="#Parrucchieri"> I Nostri Parrucchieri </a></li>
+                  <li><a href="Contact/"> Contattaci </a></li>
+                  <li><a href=""> Il Mio Account </a></li>
+              </ul>
+          </div>
+          <div class="content"> 
+              <h1>{{saloni.NomeSalone}}</h1>
+              <p> {{saloni.Descrizione}}</p>
+              <div>
+                  <button type="button" onclick="location.href='{% url 'prenota' id=saloni.id %}'"><span></span> Prenota appuntamento </button>
+              </div>
+          </div>
+      </div>
+
+    </div>
+    <div class="font row" id="ChiSiamo">
+       <div class="col-8">
+            <div style="margin-top:6%; margin-left:10%" class="col-8"> 
+                 <a style="font-size: 66px; color: rgb(173 173 181);"> Chi siamo </a>
+            </div>
+            <div>
+                <p style="margin-left: 10%; font-size: 25px; text-align: justify; max-width: 680px; padding-top: 42px">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, ssunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            </div>
+           <div style="margin-top: 15%; margin-left:10%; display: flex" class="content1">
+                 <div style="font-size: 20px">
+                        Per saperne di piú, Contattaci al numero {{saloni.RecapitoTelefonico}}. 
+                            <button type="button"><span></span> Andiamo! </button>
+                 </div>
+           </div>
+       </div>   
+       <div style="text-align-last: end; margin-right: 3%;margin-left: inherit">
+           <ul>
+             <li class="responsive"><a href="#Home" style="color:#7A7A7A"> Torna Su! <img src="{%static "app/Foto/uparrow.png" %}" width="25" height="25" /></a></li>
+           </ul>
+       </div>
+    </div>
+    <div style = "margin-top:8%; text-align: -webkit-center;" class="font" id="Parrucchieri">
+        <div>
+            <div style="margin-top:3%; margin-left:70%"> 
+                 <a style="font-size: 50px; color: rgb(173 173 181);"> I Nostri Parrucchieri </a>
+            </div>
+            <p style="margin-top: 20px; text-align: end; font-size: 22px; margin-right: 4%">Guarda i giudizi dei clienti sui nostri parrucchieri:</p>
+        </div>  
+        <div style="display: -webkit-inline-box; margin-top: 5%; justify-content: space-between">
+          {% for dipendente in dipendenti %}
+              <div class="card">
+                  <div class="card-image1"></div>
+                      <div class="card-text">
+                        <h2>{{dipendente.Nome}}</h2>
+                        <p>{{dipendente.RecapitoTelefonico}}</p>
+                        <p>{{dipendente.Email}}</p>
+                      </div>
+                       <div class="card-stats">
+                            <div class="stat">
+                                  <div class="value">12<sup></sup></div>
+                                  <div class="type">Clienti Abituali</div>
+                            </div>
+                           <div class="stat">
+                                  <div class="value">3<sup></sup></div>
+                                  <div class="type">Anni di Esperienza</div>
+                            </div>
+                            <div class="stat">
+                                  <div class="value">Tutti</div>
+                                  <div class="type">Numero Trattamenti</div>
+                            </div>
+                      </div>
+                </div>
+          {% endfor %}
+           
+        </div>
+
+    </div>
+       
+  
+</body>
+
+
+
+
+ {% block contenuto %}
+ {% endblock %}

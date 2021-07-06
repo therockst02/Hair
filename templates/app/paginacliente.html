@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+     <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&family=Indie+Flower&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+
+    
+    <title></title>
+
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/cliente.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
+
+</head>
+
+<body>
+    
+    <div id="Home" style="padding-left: 30px; padding-right: 30px">
+       <div>
+          <div class="navbarhome">
+              <img src="{% static "app/Foto/Logo.png" %}" class="logo" style="width:7%; height:7%"/>
+              <ul>
+                  <li><a href="#Saloni"> Altri Saloni </a></li>
+                  <li><a href="Contact/"> Contattaci </a></li>
+                  <li><a href=""> Serve Aiuto? </a></li>
+                  <li><a href=""> I Miei Appuntamenti </a></li>
+                  <li><a href=""> Il Mio Account </a></li>
+              </ul>
+          </div> 
+       </div>
+
+        <h1 style="color:white">Vuoi prenotare un appuntamento?</h1>
+        <h2>Dai un'occhiata ai Saloni migliori!</h2>
+
+    <div class="container">
+        
+     {% for salone in saloni %}
+
+         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url({{salone.Immagine.url}});">
+            <div>
+              <div class="content">
+                <h3 style="text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">{{salone.NomeSalone}}</h3>
+                <p>{{salone.Descrizione}}</p>
+                <a href={% url 'informazionisalone' id=salone.id %}>Read More</a>
+              </div>
+            </div>
+          </div>
+        
+ 
+     {% endfor %}
+
+    </div>
+   </div>
+</body>
+</html>

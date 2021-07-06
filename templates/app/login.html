@@ -1,0 +1,97 @@
+﻿<html>
+
+
+<head>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/login.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+</head>
+
+<body>
+
+
+
+     <div class="hero">
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+                <button type="button" class="toggle-btn" onclick="login()">Log In as Client</button>
+                <button type="button" class="toggle-btn" onclick="register()">Log In as Barber</button>
+            </div>
+            <form id="login" class="input-group" method="post">
+                {% csrf_token %}
+                <div class="input-field">
+                    <label for="id_username" placeholder="User Id">Username</label>
+                    <div>
+                        {{ form.username }}
+                    </div>
+                </div>
+                <div class="form-group input-field">
+                    <label for="id_password" placeholder="Enter Password">Password</label>
+                    <div>
+                        {{ form.password }}
+                    </div>
+                </div>
+                <input type="checkbox" class="check-box"/><span>Remember Password</span>
+                <button type="submit" style=" margin-top: 30px" class="submit-btn">Log In</button>
+                {% if form.errors %}
+                <p class="validation-summary-errors">Please enter a correct user name and password.</p>
+                {% endif %}
+            </form>
+            <form id="register" class="input-group" method="post">
+                {% csrf_token %}
+                <div class="input-field">
+                    <label for="id_username" placeholder="User Id">Username</label>
+                    <div>
+                        {{ form.username }}
+                    </div>
+                </div>
+                <div class="form-group input-field">
+                    <label for="id_password" placeholder="Enter Password">Password</label>
+                    <div>
+                        {{ form.password }}
+                    </div>
+                </div>
+                <input type="checkbox" class="check-box"/><span>Remember Password</span>
+                <button type="submit" style=" margin-top: 30px" class="submit-btn">Log In</button>
+                {% if form.errors %}
+                <p class="validation-summary-errors">Please enter a correct user name and password.</p>
+                {% endif %}
+            </form>
+        </div>
+     </div>
+
+
+   
+
+</body>
+</html>
+
+<script>
+    var x = document.getElementById("login")
+    var y = document.getElementById("register")
+    var z = document.getElementById("btn")
+
+    function register() {
+        x.style.left = "-400px"
+        y.style.left = "50px"
+        z.style.left = "110px"
+    }
+
+     function login() {
+        x.style.left = "50px"
+        y.style.left = "450px"
+        z.style.left = "0px"
+    }
+
+</script>
+
+{% block scripts %}
+
+    {% load staticfiles %}
+<script src="{% static 'app/scripts/jquery.validate.min.js' %}">
+</script>
+
+{% endblock %}
+

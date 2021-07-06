@@ -1,0 +1,60 @@
+﻿{% load crispy_forms_tags %}
+
+<html>
+
+
+
+<head>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/forms.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/login.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
+</head>
+
+<body>
+
+
+   <div class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(../../static/app/Foto/unnamed.jpg); background-color: #009688; background-blend-mode: multiply">
+     <div class="forme-box" style="border-radius: 15px; justify-items: center">
+        <div class="row">
+            <div class="col-8" style="max-width:900px; justify-content:center">
+                <div style="margin-top:36px;width:100%; padding-top:2.5px">
+                    <div class="container blank" style="width: max-content; color: black">
+                        <h2 style="margin-top: unset"> Prenota un Appuntamento</h2>
+                        <div style="margin-top: 67px">
+                        <form method="post" enctype = "multipart/form-data">
+                            {% csrf_token %}
+                            {{ form.Id_Trattamento|as_crispy_field}}
+                            <div id="div_id_Id_Dipendente" class="form-group">
+                                    <label for="id_Id_Dipendente" class=" requiredField">
+                                        Id Dipendente<span class="asteriskField">*</span>
+                                    </label>
+                                    <div class="">
+                                        <select name="Id_Dipendente" class="select form-control" required="" id="id_Id_Dipendente">
+                                        <option value="" selected="">---------</option>
+                                            {% for dipendente in Dipendenti %}
+                                                <option value="{{dipendente.pk}}">{{dipendente.Nome}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                            </div>
+                            {{ form.Data|as_crispy_field }}
+                            {{ form.Ora|as_crispy_field }}
+                            <div style="text-align-last: center; margin-top: 40px">
+                               <input type="submit" style="color: black !important; background-color: #009688 !important; border: 2px solid #000000 !important;" class="button" value = "Prenota" />
+                             </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+    </div>
+
+   
+
+</body>
+</html>
+    

@@ -1,0 +1,45 @@
+body {
+    background: #1A1A1A;
+    font-family: 'Poppins', sans-serif !important;
+    color: white;
+
+}
+
+h2{
+    font-size: 35px;
+   
+}
+
+.button {
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid #009688 !important;
+    background: transparent !important;
+    color: #fff !important;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    font-size: medium !important;
+}
+
+
+button:hover span {
+    width: 100% !important;
+}
+
+button:hover {
+    border: none;
+}
+
+.button:hover span {
+    width: 100% !important;
+}
+
+.button:hover {
+    border: none;
+}
+
